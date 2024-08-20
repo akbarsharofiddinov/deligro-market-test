@@ -1,9 +1,9 @@
 import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import banner from "../images/banner.jpg";
-import banner2 from "../images/banner-2.jpg";
-import banner3 from "../images/banner-3.jpg";
+import banner from "../images/banner-1.png";
+import banner2 from "../images/banner-2.png";
+import banner3 from "../images/banner-3.png";
 
 const Banner: React.FC = () => {
   return (
