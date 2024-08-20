@@ -86,7 +86,7 @@ const Categories: React.FC = () => {
                     <div className="inner-category">
                       {category.subCategories.map((subCategory) => (
                         <a
-                          href="#"
+                          href="/"
                           className="subCategory-item"
                           key={subCategory.id}
                           style={{ color: "#333" }}
@@ -100,7 +100,7 @@ const Categories: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <a href="#" className="category-item" key={category.id}>
+                  <a href="/" className="category-item" key={category.id}>
                     <div className="category-inner">
                       <img src={category.image} alt="" />
                       <div className="body">
