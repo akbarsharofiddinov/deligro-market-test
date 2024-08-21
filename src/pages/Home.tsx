@@ -1,15 +1,28 @@
-import { Banner, Cart, Products, SearchInput } from "@/components";
+import {
+  Banner,
+  Cart,
+  Categories,
+  Footer,
+  Products,
+  SearchInput,
+} from "@/components";
 import { useEdisonContext } from "@/context/EdisonContext";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
   const { isOpen } = useEdisonContext();
 
   const navigate = useNavigate();
+  let tg = Telegram.WebApp;
 
-  function navigateCategoriesPage() {
-    navigate("/categories");
-  }
+  // useEffect(() => {
+  //   if (tg.initDataUnsafe.user?.id === undefined) {
+  //     navigate("/error");
+  //   } else {
+  //     return;
+  //   }
+  // }, []);
 
   return (
     <section className="section-home">
@@ -19,9 +32,12 @@ function Home() {
           style={isOpen ? { display: "none" } : { display: "block" }}
         >
           <Banner />
-          <SearchInput navigateCategoriesPage={navigateCategoriesPage} />
+          <SearchInput />
+          <Categories />
           <Products />
+          <Footer />
         </div>
+        {/* <FeedbackModal /> */}
         <Cart isOpen={isOpen} />
       </div>
     </section>

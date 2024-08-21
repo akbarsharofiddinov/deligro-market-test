@@ -1,18 +1,14 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
 import { EdisonContextProvider } from "./context/EdisonContext";
 import ErrorComponent from "./components/ErrorComponent";
-import { Footer, Header } from "./components";
-import { Categories, Home } from "./pages";
+import { Header } from "./components";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
-    },
-    {
-      path: "/categories",
-      element: <Categories />,
     },
     {
       path: "/error",
@@ -24,7 +20,6 @@ function App() {
     <EdisonContextProvider>
       <Header />
       <RouterProvider router={router} />
-      <Footer />
     </EdisonContextProvider>
   );
 }
