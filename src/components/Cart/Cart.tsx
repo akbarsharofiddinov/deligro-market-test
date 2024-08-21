@@ -24,6 +24,9 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
 
+  let tg = Telegram.WebApp;
+  let chat_id = tg.initDataUnsafe.user?.id;
+
   // Axios request
   async function getDeliveryCost() {
     try {
@@ -38,10 +41,24 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
 
   function handleSubmit() {
     setLoading(true);
-    setTimeout(() => {
-      //.....///
-      setLoading(false);
-      console.log("Success!");
+    const dataObj: OrderDataObj = {
+      chat_id: chat_id!,
+      address,
+      comment,
+      products: [...cartProducts],
+    };
+    setTimeout(async () => {
+      try {
+        const response = await axios.post(`${baseURL}/api/orders`, dataObj);
+        if (response.status === 200) {
+          tg.close();
+          setLoading(false);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     }, 2000);
   }
 
@@ -190,6 +207,10 @@ const Cart: React.FC<CartProps> = ({ isOpen }: CartProps) => {
                         "Оформить заказ"
                       )}
                     </button>
+                    <p className="cart-link">
+                      Разработчик
+                      <a href="https://www.dbc24.uz">Dbc24.uz</a>
+                    </p>
                   </div>
                 </div>
               </div>

@@ -1,1 +1,1 @@
-export const baseURL = "https://jasmina-market.webclub.uz";
+export const baseURL = "https://deligro.dbc-server.uz";
